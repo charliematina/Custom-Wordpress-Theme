@@ -48,7 +48,29 @@ function wpb_change_title_text( $title ){
      return $title;
 }
 
+function service_title_text( $title ){
+     $screen = get_current_screen();
+
+     if  ( 'service' == $screen->post_type ) {
+          $title = 'Service Name';
+     }
+
+     return $title;
+}
+
+function project_title_text( $title ){
+     $screen = get_current_screen();
+
+     if  ( 'project' == $screen->post_type ) {
+          $title = 'Project Name';
+     }
+
+     return $title;
+}
+
 add_filter( 'enter_title_here', 'wpb_change_title_text' );
+add_filter( 'enter_title_here', 'service_title_text' );
+add_filter( 'enter_title_here', 'project_title_text' );
 
 // =============================================
 // CUSTOM POST TYPE(PROJECTS)
@@ -63,7 +85,7 @@ function projects_init() {
         'add_new'            => _x( 'Add New Project', 'project' ),
         'add_new_item'       => __( 'Add New Project' ),
         'new_item'           => __( 'New Project' ),
-        'menu_position'      => __( '5' ),
+        'menu_position'      => __( '2' ),
         'edit_item'          => __( 'Edit Project' ),
         'view_item'          => __( 'View Project' ),
         'all_items'          => __( 'All Projects' ),
@@ -92,7 +114,7 @@ function projects_init() {
 add_action( 'init', 'projects_init' );
 
 // =============================================
-// CUSTOM POST TYPE(PROJECTS)
+// CUSTOM POST TYPE(TEAM)
 // =============================================
 
 function team_init() {
@@ -105,7 +127,7 @@ function team_init() {
         'add_new'            => _x( 'Add New Team Member', 'team_member' ),
         'add_new_item'       => __( 'Add New Team Member' ),
         'new_item'           => __( 'New Team Member' ),
-        'menu_position'      => __( '5' ),
+        'menu_position'      => __( '3' ),
         'edit_item'          => __( 'Edit Team Member' ),
         'view_item'          => __( 'View Team Member' ),
         'all_items'          => __( 'All Team Members' ),
@@ -133,6 +155,49 @@ function team_init() {
 }
 
 add_action( 'init', 'team_init' );
+
+
+// =============================================
+// CUSTOM POST TYPE(SERVICES)
+// =============================================
+
+function services_init() {
+    $labels = array(
+        'name'               => _x( 'Services', 'post type general name' ),
+        'title'               => _x( 'Service Name', 'post type general name' ),
+        'singular_name'      => _x( 'Service', 'post type singular name' ),
+        'menu_name'          => _x( 'Services', 'admin menu' ),
+        'name_admin_bar'     => _x( 'Service', 'add new on admin bar' ),
+        'add_new'            => _x( 'Add New Service', 'team_member' ),
+        'add_new_item'       => __( 'Add New Service' ),
+        'new_item'           => __( 'New Service' ),
+        'menu_position'      => __( '4' ),
+        'edit_item'          => __( 'Edit Service' ),
+        'view_item'          => __( 'View Service' ),
+        'all_items'          => __( 'All Services' ),
+        'search_items'       => __( 'Search Services' ),
+        'parent_item_colon'  => __( 'Parent Services:' ),
+        'not_found'          => __( 'No Service found.' ),
+        'not_found_in_trash' => __( 'No Service found in Trash.' )
+    );
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'show_ui' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'rewrite' => array('slug' => 'services'),
+        'query_var' => true,
+        'menu_icon' => 'dashicons-hammer',
+        'supports' => array(
+            'title',
+            'editor',
+            'thumbnail',),
+        );
+    register_post_type( 'service', $args );
+}
+
+add_action( 'init', 'services_init' );
 
 
 // =============================================

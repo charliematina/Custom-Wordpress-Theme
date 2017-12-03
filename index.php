@@ -17,7 +17,7 @@
 				</div>
 				<!-- Projects start here -->
 				<div class="flex-row projects-container">
-					<?php $args = array( 'post_type' => 'project', 'posts_per_page' => 1, 'paged' => get_query_var('paged') ? get_query_var('paged') : 1 ); ?>
+					<?php $args = array( 'post_type' => 'project', 'posts_per_page' => 6, 'paged' => get_query_var('paged') ? get_query_var('paged') : 1 ); ?>
 					<?php $loop = new WP_Query( $args ); ?>
 					<?php if($loop->have_posts()): ?>
 						<?php while($loop->have_posts()): $loop->the_post(); ?>

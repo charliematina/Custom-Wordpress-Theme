@@ -195,6 +195,11 @@ jQuery(document).ready(function($){
 	});
 
 
+	// Get in touch contact form show effect
+	$('.get-in-touch-btn').click(function() {
+		$('.get-in-touch-btn').css('opacity','0.4');
+		$('.hidden-form').fadeIn();
+	});
 
 
 
