@@ -36,6 +36,21 @@ function custom_logo_setup() {
 add_theme_support( 'post-thumbnails', array( 'project' ) );
 
 // =============================================
+// CUSTOM INPUT FIELD SECTION NAMES
+// =============================================
+function wpb_change_title_text( $title ){
+     $screen = get_current_screen();
+
+     if  ( 'team_member' == $screen->post_type ) {
+          $title = 'Team Members Name';
+     }
+
+     return $title;
+}
+
+add_filter( 'enter_title_here', 'wpb_change_title_text' );
+
+// =============================================
 // CUSTOM POST TYPE(PROJECTS)
 // =============================================
 
@@ -45,7 +60,7 @@ function projects_init() {
         'singular_name'      => _x( 'Project', 'post type singular name' ),
         'menu_name'          => _x( 'Projects', 'admin menu' ),
         'name_admin_bar'     => _x( 'Project', 'add new on admin bar' ),
-        'add_new'            => _x( 'Add New Project', 'programme' ),
+        'add_new'            => _x( 'Add New Project', 'project' ),
         'add_new_item'       => __( 'Add New Project' ),
         'new_item'           => __( 'New Project' ),
         'menu_position'      => __( '5' ),
@@ -75,6 +90,157 @@ function projects_init() {
 }
 
 add_action( 'init', 'projects_init' );
+
+// =============================================
+// CUSTOM POST TYPE(PROJECTS)
+// =============================================
+
+function team_init() {
+    $labels = array(
+        'name'               => _x( 'Team Members', 'post type general name' ),
+        'title'               => _x( 'Team Member Name', 'post type general name' ),
+        'singular_name'      => _x( 'Team Member', 'post type singular name' ),
+        'menu_name'          => _x( 'Team Members', 'admin menu' ),
+        'name_admin_bar'     => _x( 'Team Member', 'add new on admin bar' ),
+        'add_new'            => _x( 'Add New Team Member', 'team_member' ),
+        'add_new_item'       => __( 'Add New Team Member' ),
+        'new_item'           => __( 'New Team Member' ),
+        'menu_position'      => __( '5' ),
+        'edit_item'          => __( 'Edit Team Member' ),
+        'view_item'          => __( 'View Team Member' ),
+        'all_items'          => __( 'All Team Members' ),
+        'search_items'       => __( 'Search Team Members' ),
+        'parent_item_colon'  => __( 'Parent Team Members:' ),
+        'not_found'          => __( 'No Team Member found.' ),
+        'not_found_in_trash' => __( 'No Team Member found in Trash.' )
+    );
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'show_ui' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'rewrite' => array('slug' => 'team'),
+        'query_var' => true,
+        'menu_icon' => 'dashicons-groups',
+		'register_meta_box_cb' => 'add_job_metaboxes',
+        'supports' => array(
+            'title',
+            'editor',
+            'thumbnail',),
+        );
+    register_post_type( 'team_member', $args );
+}
+
+add_action( 'init', 'team_init' );
+
+
+// =============================================
+// CUSTOM META BOXES
+// =============================================
+
+// function add_job_metaboxes() {
+// 	add_meta_box(
+// 		'wpt_events_location',
+// 		'Event Location',
+// 		'wpt_events_location',
+// 		'events',
+// 		'side',
+// 		'default'
+// 	);
+// }
+//
+// function add_job_role() {
+// 	global $post;
+// 	// Nonce field to validate form request came from current site
+// 	wp_nonce_field( basename( __FILE__ ), 'event_fields' );
+// 	// Get the location data if it's already been entered
+// 	$location = get_post_meta( $post->ID, 'location', true );
+// 	// Output the field
+// 	echo '<input type="text" name="location" value="' . esc_textarea( $location )  . '" class="">';
+// }
+
+
+
+// =============================================
+
+$metaboxes = array(
+    'programmes' => array(
+        'title' => __('Job Role(s)'),
+        'applicableto' => 'team_member',
+        'location' => 'normal',
+        'priority' => 'low',
+        'fields' => array(
+            'jobRole' => array(
+                'title' => __('Job Role(s)'),
+                'type' => 'text'
+            )
+        )
+    )
+);
+
+function add_post_format_metabox() {
+    global $metaboxes;
+    if ( ! empty( $metaboxes ) ) {
+        foreach ( $metaboxes as $id => $metabox ) {
+            add_meta_box( $id, $metabox['title'], 'show_metaboxes', $metabox['applicableto'], $metabox['location'], $metabox['priority'], $id );
+        }
+    }
+}
+
+add_action( 'admin_init', 'add_post_format_metabox' );
+
+function show_metaboxes( $post, $args ) {
+    global $metaboxes;
+    $custom = get_post_custom( $post->ID );
+    $fields = $tabs = $metaboxes[$args['id']]['fields'];
+    $output = '<input type="hidden" name="post_format_meta_box_nonce" value="' . wp_create_nonce( basename( __FILE__ ) ) . '" />';
+    if ( sizeof( $fields ) ) {
+        foreach ( $fields as $id => $field ) {
+            switch ( $field['type'] ) {
+                default:
+                case "text":
+                    $output .= '<label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="text" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" />';
+                    break;
+                case "number":
+                    $output .= '<label for="' . $id . '">' . $field['title'] . '</label><input class="customInput" id="' . $id . '" type="number" name="' . $id . '" value="' . $custom[$id][0] . '" style="width: 100%;" />';
+                break;
+            }
+        }
+    }
+    echo $output;
+}
+add_action( 'save_post', 'save_metaboxes' );
+
+function save_metaboxes( $post_id ) {
+    global $metaboxes;
+    if ( ! wp_verify_nonce( $_POST['post_format_meta_box_nonce'], basename( __FILE__ ) ) )
+        return $post_id;
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+        return $post_id;
+    if ( 'page' == $_POST['post_type'] ) {
+        if ( ! current_user_can( 'edit_page', $post_id ) )
+            return $post_id;
+    } elseif ( ! current_user_can( 'edit_post', $post_id ) ) {
+        return $post_id;
+    }
+    $post_type = get_post_type();
+    foreach ( $metaboxes as $id => $metabox ) {
+        if ( $metabox['applicableto'] == $post_type ) {
+            $fields = $metaboxes[$id]['fields'];
+            foreach ( $fields as $id => $field ) {
+                $old = get_post_meta( $post_id, $id, true );
+                $new = $_POST[$id];
+                if ( $new && $new != $old ) {
+                    update_post_meta( $post_id, $id, $new );
+                }
+                elseif ( '' == $new && $old || ! isset( $_POST[$id] ) ) {
+                    delete_post_meta( $post_id, $id, $old );
+                }
+            }
+        }
+    }
+}
 
 // =============================================
 // FEATURED PROJECTS MOBILE SLIDER
@@ -218,11 +384,6 @@ function featuredProjects($wp_customize){
 
 add_action('customize_register', 'featuredProjects');
 add_action('customize_register', 'featuredProjectsMobile');
-
-// =============================================
-// CUSTOM FIELDS
-// =============================================
-
 
 // =============================================
 // SOCIAL MEDIA ICONS

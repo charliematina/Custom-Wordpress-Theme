@@ -111,4 +111,93 @@ jQuery(document).ready(function($){
 	},  4000);
 
 
+	// FORM VALIDATION
+	$('#contact-submit-button').click(function(event){
+		event.preventDefault();
+		// alert('HI');
+		var nameValid = false;
+		var emailValid = false;
+		var enquiryValid = false;
+		var numberValid = false;
+
+		var nameField = $("#name-field");
+		var emailField = $("#email-field");
+		var textField = $("#textarea-field");
+		var numberField = $("#number-field");
+
+		var emailRegEx = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+
+		var phoneRegEx = /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/gm;
+
+		// Enquiry validation
+		if(textField.val() == 0){
+			textField.next().empty().html("<i class='fa fa-exclamation-circle' aria-hidden='true'></i> Please enter an enquiry.");
+			textField.focus();
+		} else{
+			textField.next().empty();
+			enquiryValid = true;
+			console.log(enquiryValid);
+		}
+
+		// Phone number validation
+		if(numberField.val() == 0){
+			numberField.next().empty().html("<i class='fa fa-exclamation-circle' aria-hidden='true'></i> Please enter your phone number");
+			numberField.focus();
+		} else if (!numberField.val().match(phoneRegEx)){
+			numberField.next().empty().html("<i class='fa fa-exclamation-circle' aria-hidden='true'></i> Please enter a valid phone number");
+			numberField.focus();
+		} else{
+			numberField.next().empty();
+			emailValid = true;
+			console.log(emailValid);
+		}
+
+		// Email validation
+		if(emailField.val() == 0){
+			emailField.next().empty().html("<i class='fa fa-exclamation-circle' aria-hidden='true'></i> Please enter an email address.");
+			emailField.focus();
+		} else if (!emailField.val().match(emailRegEx)){
+			emailField.next().empty().html("<i class='fa fa-exclamation-circle' aria-hidden='true'></i> Please enter a valid email address");
+			emailField.focus();
+		} else{
+			emailField.next().empty();
+			emailValid = true;
+			console.log(emailValid);
+		}
+
+		// Name validation
+		if(nameField.val() == 0){
+			nameField.next().empty().html("<i class='fa fa-exclamation-circle' aria-hidden='true'></i> Please enter your name.");
+			nameField.focus();
+		} else if (nameField.val().length > 50){
+			nameField.next().empty().html("<i class='fa fa-exclamation-circle' aria-hidden='true'></i> Please enter less than 50 characters.");
+			nameField.focus();
+			console.log(nameField.val());
+		} else{
+			nameField.next().empty();
+			nameValid = true;
+			console.log(nameValid);
+		}
+
+		if(nameValid && emailValid && enquiryValid == true){
+			$(".contact-form").addClass('form-filled');
+			$("#contact-submit-button").fadeOut().empty().fadeIn().text("EMAIL SENT. THANK YOU");
+		} else{
+			event.preventDefault();
+		}
+
+		if(formValid == false){
+			event.preventDefault();
+		} else{
+			console.log('Form valid');
+		}
+
+	});
+
+
+
+
+
+// End of script
+
 })

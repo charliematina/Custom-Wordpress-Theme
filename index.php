@@ -13,7 +13,7 @@
 		<div class="main-content">
 			<div class="projects-wrapper">
 				<div class="page-title">
-					<h1>PROJECTS</h1>
+					<h2>PROJECTS</h2>
 				</div>
 				<!-- Projects start here -->
 				<div class="flex-row projects-container">

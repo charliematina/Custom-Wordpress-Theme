@@ -164,11 +164,28 @@ li{
 	}
 }
 
+.page-detail-wrapper{
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 70px;
+
+	a{
+		opacity: 0.3;
+		font-weight: 600;
+	}
+
+	p{
+		opacity: 0.5;
+		margin-top: 1em;
+	}
+}
+
 .page-title{
 	width: 100%;
 	text-align: center;
-	font-size: 0.7em;
+	font-size: 1.8em;
 	letter-spacing: 10px;
+	text-transform: uppercase;
 }
 
 // Project gallery styles
@@ -243,6 +260,147 @@ li{
 	font-size: 2em;
 	letter-spacing: 6px;
 }
+
+// Team styles
+
+.team-member-image{
+	width: 170px;
+	height: 170px;
+	border-radius: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+	margin-bottom: 20px;
+
+	img{
+		width: 100%;
+		height: auto;
+	}
+}
+
+.team-page-details{
+
+	width: 80%;
+	margin: 0 auto;
+	h2{
+		width: 80%;
+		margin: 0 auto;
+		margin-bottom: 5px;
+		text-transform: uppercase;
+		word-wrap: normal;
+		letter-spacing: 6px;
+		font-size: 1.4em;
+	}
+
+	p{
+		font-size: 0.9em;
+		line-height: 25px;
+	}
+}
+
+.team-member-wrapper{
+	margin-bottom: 3em;
+}
+
+.sub-header{
+	font-weight: 600;
+	margin-bottom: 15px;
+	opacity: 0.4;
+}
+
+.single-team-member-image{
+	width: 170px;
+	height: 170px;
+	margin: 0 auto;
+	overflow: hidden;
+	margin-bottom: 1em;
+	border-radius: 100%;
+
+	img{
+		width: 100%;
+		height: auto;
+	}
+}
+
+.single-team-page-details{
+	width: 70%;
+	margin: 0 auto;
+}
+
+.single-team-page-title{
+	word-wrap: normal;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	font-size: 2.1em;
+}
+
+.single-team-member-content{
+	line-height: 27px;
+}
+
+// Contact Template Styles
+
+.contact-page-wrapper{
+
+	.page-detail-wrapper{
+		margin-bottom: 2em;
+		width: 80%;
+	}
+
+	.contact-form-wrapper{
+		width: 80%;
+		margin: 0 auto;
+	}
+}
+
+.form-input{
+	width: 100%;
+	margin-bottom: 2em;
+}
+
+.input-field{
+	width: 100%;
+	font-weight: 600;
+	letter-spacing: 0.2em;
+	background-color: transparent;
+	border: none;
+	border-bottom: 2px solid #1a1a1a;
+	outline: none;
+	margin-bottom: 0.5em;
+	padding-bottom: 0.9em;
+	text-transform: uppercase;
+	transition-duration: 100ms;
+
+	&::placeholder{
+		opacity: 0.9;
+	}
+}
+
+.button{
+	color: white;
+	outline: none;
+	border: 1.5px solid #1a1a1a;
+	border-radius: 0.5em;
+	display: inline-block;
+	margin: auto;
+	background-color: #1a1a1a;
+	padding: 10px 30px;
+	font-size: 1em;
+	letter-spacing: 0.4em;
+}
+
+.form-error{
+	width: 100%;
+	text-align: left;
+	color: #d71616;
+	font-size: 0.8em;
+}
+
+.form-filled{
+	opacity: 0.4;
+	pointer-events: none;
+}
+
+
 // Footer styles
 
 footer{
@@ -313,7 +471,7 @@ footer{
 }
 
 // Hide desktop styles
-.landing-page-bottom-nav, .navbar-item-wrapper, .featured-buttons-wrapper, #feature-slide-show, .full-footer{
+.landing-page-bottom-nav, .navbar-item-wrapper, .featured-buttons-wrapper, #feature-slide-show, .full-footer, .team-member-description{
 	display: none;
 }
 
@@ -579,6 +737,49 @@ footer{
 		letter-spacing: 6px;
 	}
 
+	// Team Page Template Styles
+	.team-member-wrapper{
+		margin-bottom: 6em;
+		width: 100%;
+	}
+
+	.team-member-image{
+		float: right;
+		right: 0;
+		height: 300px;
+		width: 300px;
+	}
+
+	.team-page-details{
+		text-align: left;
+		width: 100%;
+
+		h2{
+			width: 100%;
+			margin-bottom: 5px;
+			text-transform: uppercase;
+			word-wrap: normal;
+			letter-spacing: 6px;
+			font-size: 2.4em;
+		}
+
+		p{
+			font-weight: 600;
+		}
+	}
+
+	.team-member-description{
+		display: block !important;
+		text-align: left;
+		width: 50%;
+		line-height: 25px;
+		font-size: 0.9em;
+
+		a{
+			opacity: 0.4;
+		}
+	}
+
 	// Footer styles
 	.full-footer{
 		display: block;
@@ -633,6 +834,18 @@ footer{
 
 		&:hover{
 			opacity: 0.4;
+		}
+	}
+
+
+	.page-detail-wrapper{
+		width: 80%;
+		margin: 0 auto;
+		margin-bottom: 10em;
+
+		p{
+			opacity: 1;
+			margin-top: 1em;
 		}
 	}
 
