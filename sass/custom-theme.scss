@@ -48,6 +48,10 @@ nav{
 
 .fa{
 	cursor: pointer;
+
+	&:hover{
+		opacity: 0.4;
+	}
 }
 
 .mobile-navbar-wrapper{
@@ -184,7 +188,6 @@ li{
 	}
 
 	p{
-		opacity: 0.5;
 		margin-top: 1em;
 	}
 }
@@ -439,6 +442,18 @@ textarea{
 	height: 80vh;
 	display: flex;
 	align-items: center;
+}
+
+.service-list-item{
+	width: 80%;
+	margin: 0 auto;
+	border-radius: 0.6em;
+	padding: 1em 1em;
+	margin-bottom: 2em;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	font-weight: 600;
+	border: 2.5px solid #000000;
 }
 
 .get-in-touch-btn{
@@ -963,6 +978,72 @@ footer{
 			width: 100%;
 			height: auto;
 		}
+	}
+
+	.service-list-container{
+		width: 50%;
+	}
+
+	.service-list-item{
+		position: relative;
+		width: 80%;
+		height: auto;
+		margin: 0 auto;
+		padding: 1.3em 1em;
+		margin-bottom: 2em;
+		text-transform: uppercase;
+		letter-spacing: 0.2em;
+		border: 2px solid #000000;
+		transition-duration: 300ms;
+		cursor: pointer;
+
+		&:hover{
+			background-color: #000000;
+			color: white;
+		}
+	}
+
+	// Hamburger mobile-navbar-menu
+	#hamburger-wrapper{
+		width: 100%;
+		margin: auto;
+		width: 40px;
+		height: 20px;
+		cursor: pointer;
+		position: relative;
+		z-index: 5;
+		text-align: center;
+
+			&:hover{
+				.burger-line{
+					width: 100% !important;
+				}
+			}
+	}
+
+	.burger-line{
+		width: 100%;
+		height: 5px;
+		background-color: #1f1f1f;
+		// margin-bottom: 4px;
+		transition-duration: 200ms;
+		position: absolute;
+		top: 0px;
+		right: 0px;
+	}
+
+
+	.mdl{
+		top: 15px;
+		width: 60%;
+	}
+
+	.rotate1{
+		transform: rotate(45deg);
+	}
+
+	.rotate2{
+		transform: rotate(-45deg);
 	}
 
 

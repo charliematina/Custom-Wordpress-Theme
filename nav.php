@@ -13,7 +13,10 @@
 			<?php wp_nav_menu(array('theme_location'=>'primary-nav')); ?>
 		</div>
 		<div class="nav-bar-menu-icon">
-			<i class="fa fa-bars" aria-hidden="true"></i>
+			<div id="hamburger-wrapper" class="nav-bar-menu-icon">
+				<div class="burger-line top"></div>
+				<div class="burger-line mdl"></div>
+			</div>
 		</div>
 	</div>
 	<div class="mobile-navbar-wrapper">

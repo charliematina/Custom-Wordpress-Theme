@@ -46,8 +46,17 @@ jQuery(document).ready(function($){
     });
 
 	// Desktop nav menu button actions
-	$('.nav-bar-menu-icon .fa').click(function(){
-		if(!navOpen){
+	var menuOpen = false;
+	$("#hamburger-wrapper").click(function(){
+		if(menuOpen === false){
+			$(".burger-line").css({
+				"width":"100%",
+				"top":"10px"
+
+			});
+			$("#hamburger-wrapper").css('width','30px');
+			$(".top").addClass("rotate1");
+			$(".btm, .mdl").addClass("rotate2");
 			$('.navbar-menu').fadeIn(300);
 			$('nav').css(
 				{
@@ -55,8 +64,15 @@ jQuery(document).ready(function($){
 					'box-shadow':'0px 0px 4px rgba(0, 0, 0, 0.15)'
 				}
 			);
-			navOpen = true;
+			menuOpen = true;
 		} else{
+			$(".burger-line").css({
+				"width":"100%",
+				"top":"0"
+			});
+			$("#hamburger-wrapper").css('width','40px');
+			$(".top").removeClass("rotate1");
+			$(".btm, .mdl").removeClass("rotate2").css({'top':'15px','width':'60%'});
 			$('.navbar-menu').fadeOut(300);
 			$('nav').css(
 				{
@@ -64,9 +80,9 @@ jQuery(document).ready(function($){
 					'box-shadow':'0px 0px 4px rgba(0, 0, 0, 0)'
 				}
 			);
-			navOpen = false;
+			menuOpen = false;
 		}
-	})
+	});
 
 	// Project thumbnail hover
 	$('.project-thumb-wrapper').hover(function(){
@@ -136,7 +152,6 @@ jQuery(document).ready(function($){
 		} else{
 			textField.next().empty();
 			enquiryValid = true;
-			console.log(enquiryValid);
 		}
 
 		// Phone number validation
@@ -148,8 +163,7 @@ jQuery(document).ready(function($){
 			numberField.focus();
 		} else{
 			numberField.next().empty();
-			emailValid = true;
-			console.log(emailValid);
+			numberValid = true;
 		}
 
 		// Email validation
@@ -162,7 +176,6 @@ jQuery(document).ready(function($){
 		} else{
 			emailField.next().empty();
 			emailValid = true;
-			console.log(emailValid);
 		}
 
 		// Name validation
@@ -172,24 +185,16 @@ jQuery(document).ready(function($){
 		} else if (nameField.val().length > 50){
 			nameField.next().empty().html("<i class='fa fa-exclamation-circle' aria-hidden='true'></i> Please enter less than 50 characters.");
 			nameField.focus();
-			console.log(nameField.val());
 		} else{
 			nameField.next().empty();
 			nameValid = true;
-			console.log(nameValid);
 		}
 
-		if(nameValid && emailValid && enquiryValid == true){
+		if(nameValid && emailValid && enquiryValid && numberValid == true){
 			$(".contact-form").addClass('form-filled');
 			$("#contact-submit-button").fadeOut().empty().fadeIn().text("EMAIL SENT. THANK YOU");
 		} else{
 			event.preventDefault();
-		}
-
-		if(formValid == false){
-			event.preventDefault();
-		} else{
-			console.log('Form valid');
 		}
 
 	});
@@ -200,8 +205,6 @@ jQuery(document).ready(function($){
 		$('.get-in-touch-btn').css('opacity','0.4');
 		$('.hidden-form').fadeIn();
 	});
-
-
 
 // End of script
 
