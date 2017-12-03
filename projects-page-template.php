@@ -4,7 +4,7 @@
 	*/
  ?>
  <?php get_header(); ?>
- <div class="page-master-container">
+ <div class="page-master-container project-master">
 	 <div class="main-content contact-page-wrapper">
 		 <div class="page-detail-wrapper">
 			 <?php if(have_posts()): ?>
@@ -15,19 +15,35 @@
 			 <?php endif; ?>
 		 </div>
 			 <!-- Projects start here -->
-			 <div class="flex-row projects-container">
-				 <?php $args = array( 'post_type' => 'project', 'posts_per_page' => 6, 'paged' => get_query_var('paged') ? get_query_var('paged') : 1 ); ?>
+			 <div class="flex-row projects-container project-page">
+				 <?php $args = array( 'post_type' => 'project', 'posts_per_page' => 9999, 'paged' => get_query_var('paged') ? get_query_var('paged') : 1 ); ?>
 				 <?php $loop = new WP_Query( $args ); ?>
 				 <?php if($loop->have_posts()): ?>
 					 <?php while($loop->have_posts()): $loop->the_post(); ?>
-						 <?php include('partials/projects.php'); ?>
+						 <div class="col project-thumb-wrapper">
+						 	<a class="project-thumb-link" href="<?= get_permalink()?>">
+						 		<div class="project-thumb-overlay"></div>
+						 		<div class="project-thumb-image">
+						 			<?php if (has_post_thumbnail() ): ?>
+						 				<!-- <?php the_post_thumbnail(); ?> -->
+						 				<img src="<?= the_post_thumbnail_url(); ?>" alt="test">
+						 			<?php else: ?>
+						 				<?php  the_title(); ?>
+						 			<?php endif; ?>
+						 		</div>
+						 		<div class="project-thumb-description">
+						 			<p class="project-thumb-title"><?php  the_title(); ?></p>
+						 			<p class="project-thumb-date"><?=  get_the_date(); ?></p>
+						 		</div>
+						 	</a>
+						 </div>
 					 <?php endwhile; ?>
-					 <div class="pageNavigation">
+					 <!-- <div class="pageNavigation">
 						 <?php
 							 previous_posts_link( "<span class='pagination prev-page'>Prev</span>" );
 							 next_posts_link( "<span class='pagination next-page'>Next</span>", $loop->max_num_pages );
 						 ?>
-					 </div>
+					 </div> -->
 				 <?php endif; ?>
 			 </div>
 		 </div>

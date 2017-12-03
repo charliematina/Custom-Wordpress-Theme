@@ -29,6 +29,11 @@ nav{
 	z-index: 2;
 }
 
+.active{
+	font-weight: 600;
+	opacity: 0.3;
+}
+
 .custom-logo{
 	height: 100%;
 	width: auto;
@@ -270,6 +275,12 @@ li{
 	margin: auto;
 	font-size: 2em;
 	letter-spacing: 6px;
+}
+
+.project-page{
+	.project-thumb-wrapper{
+		opacity: 1;
+	}
 }
 
 // Team styles
@@ -583,7 +594,7 @@ footer{
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		justify-content: center;
+		justify-content: flex-start;
 	}
 
 	.col{
@@ -763,6 +774,10 @@ footer{
 		text-align: center;
 	}
 
+	.project-master{
+		width: 80%;
+	}
+
 	.main-content{
 		width: 100%;
 	}
@@ -877,8 +892,13 @@ footer{
 
 	}
 
+	.footer-to-top-btn{
+		width: 50px;
+		text-align: right;
+	}
+
 	.footer-copyright{
-		font-size: 0.8em;
+		font-size: 0.7em;
 		font-weight: 600;
 	}
 
@@ -1046,6 +1066,11 @@ footer{
 		transform: rotate(-45deg);
 	}
 
+	.theme-by{
+		width: 50px;
+		text-align: left;
+		font-weight: 600;
+	}
 
 
 	// Hide Mobile Elements

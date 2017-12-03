@@ -20,6 +20,16 @@ function customThemeSetup(){
 	register_nav_menu('footer-nav', 'Footer nav menu 1');
 }
 
+// Current page nav active
+add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
+
+function special_nav_class ($classes, $item) {
+    if (in_array('current-menu-item', $classes) ){
+        $classes[] = 'active ';
+    }
+    return $classes;
+}
+
 
 // Add a custom logo
 function custom_logo_setup() {
