@@ -18,7 +18,7 @@
 }
 
 body{
-	font-family: proxima nova;
+	font-family: proxima nova, avenir, helvetica, sans-serif;
 	background-color: #ffffff;
 }
 
@@ -574,6 +574,24 @@ footer{
 	}
 }
 
+.slide-btn{
+	opacity: 0.3;
+	transition-duration: 200ms;
+
+	&:hover{
+		opacity: 1;
+		font-size: 0.9em !important;
+	}
+}
+
+.active-slide-btn{
+	opacity: 1;
+}
+
+#slide-2, #slide-3{
+	display: none;
+}
+
 // Hide desktop styles
 .landing-page-bottom-nav, .navbar-item-wrapper, .featured-buttons-wrapper, #feature-slide-show, .full-footer, .team-member-description{
 	display: none;
@@ -840,7 +858,7 @@ footer{
 	    margin-bottom: 1.5em;
 	    width: 85%;
 		padding-bottom: 0.5em;
-		border-bottom: 0.1em solid #cccccc;
+		border-bottom: 0.1em solid #141414;
 
 		p{
 			margin: 30px 0px;

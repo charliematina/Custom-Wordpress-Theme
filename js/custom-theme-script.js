@@ -28,15 +28,6 @@ jQuery(document).ready(function($){
 		$('.footer-to-top-btn').hide();
 	}
 
-	// Change aspect ratio for project thumbnails
-	// $(window).load(function(){
-	// 	$('.project-thumb-image').find('img').each(function(){
-	// 		var imgClass = (this.width/this.height > 1) ? 'project-thumb-image-wide' : 'project-thumb-image-tall';
-	// 		$(this).addClass(imgClass);
-	// 	})
-	// })
-
-
 	// Scroll to element functionfunction scroll(element, target, speed){
 	function scrollTo(element, target, speed){
 	   $(element).click(function() {
@@ -46,7 +37,13 @@ jQuery(document).ready(function($){
 	   });
 	}
 
-	scrollTo('.footer-to-top-btn','body',500);
+	$('.footer-to-top-btn').on('click', function (e) {
+        e.preventDefault();
+        $('html,body').animate({
+            scrollTop: 0
+        }, 700);
+    });
+
 	scrollTo('.go-down-btn','.projects-wrapper',1000);
 
 	// Scroll function effect
@@ -116,9 +113,9 @@ jQuery(document).ready(function($){
 	// Project thumbnail hover
 	$('.project-thumb-wrapper').hover(function(){
 
-		$(this).find('.project-thumb-description, .project-thumb-overlay').fadeIn(400);
+		$(this).find('.project-thumb-description, .project-thumb-overlay').stop().fadeIn(300);
 	},function(){
-		$(this).find('.project-thumb-description, .project-thumb-overlay').fadeOut(400);
+		$(this).find('.project-thumb-description, .project-thumb-overlay').stop().fadeOut(300);
 	})
 
 	// Lazy load images homepage
@@ -135,25 +132,50 @@ jQuery(document).ready(function($){
 	})
 
 	// Featured projects slide show
-	$("#feature-slide-show > div:gt(0), #mobile-feature-slide-show > div:gt(0)").hide();
+	// $("#feature-slide-show > div:gt(0), #mobile-feature-slide-show > div:gt(0)").hide();
 
-	setInterval(function() {
-	  $('#feature-slide-show > div:first')
-	    .fadeOut(800)
-	    .next()
-	    .fadeIn(1000)
-	    .end()
-	    .appendTo('#feature-slide-show');
-	},  4000);
+	// setInterval(function() {
+	//   $('#feature-slide-show > div:first').stop()
+	//     .fadeOut(800)
+	//     .next()
+	//     .fadeIn(1000)
+	//     .end()
+	//     .appendTo('#feature-slide-show');
+	//
+	// },  4000);
+	//
+	// setInterval(function() {
+	//   $('#mobile-feature-slide-show > div:first')
+	//     .fadeOut(800)
+	//     .next()
+	//     .fadeIn(1000)
+	//     .end()
+	//     .appendTo('#mobile-feature-slide-show');
+	// },  4000);
 
-	setInterval(function() {
-	  $('#mobile-feature-slide-show > div:first')
-	    .fadeOut(800)
-	    .next()
-	    .fadeIn(1000)
-	    .end()
-	    .appendTo('#mobile-feature-slide-show');
-	},  4000);
+	$('#feature-slide-btn-1').addClass('active-slide-btn');
+	$('#feature-slide-btn-1').click(function(){
+		$('.slide-btn').removeClass('active-slide-btn');
+		$(this).addClass('active-slide-btn');
+		$('#slide-2, #slide-3').stop().fadeOut();
+		$('#slide-1').stop().fadeIn();
+
+	});
+	$('#feature-slide-btn-2').click(function(){
+		$('.slide-btn').removeClass('active-slide-btn');
+		$(this).addClass('active-slide-btn');
+		$('#slide-1, #slide-3').stop().fadeOut();
+		$('#slide-2').stop().fadeIn();
+
+	});
+
+	$('#feature-slide-btn-3').click(function(){
+		$('.slide-btn').removeClass('active-slide-btn');
+		$(this).addClass('active-slide-btn');
+		$('#slide-1, #slide-2').stop().fadeOut();
+		$('#slide-3').stop().fadeIn();
+
+	});
 
 
 	// FORM VALIDATION
