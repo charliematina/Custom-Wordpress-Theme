@@ -2,6 +2,37 @@
 
 include('partials/user_customisation.php');
 
+function tags_init() {
+	// create a new taxonomy
+	$labels = array(
+    'name' => _x( 'Tags', 'taxonomy general name' ),
+    'singular_name' => _x( 'Tag', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Tags' ),
+    'popular_items' => __( 'Popular Tags' ),
+    'all_items' => __( 'All Tags' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Edit Tag' ),
+    'update_item' => __( 'Update Tag' ),
+    'add_new_item' => __( 'Add New Tag' ),
+    'new_item_name' => __( 'New Tag Name' ),
+    'separate_items_with_commas' => __( 'Separate tags with commas' ),
+    'add_or_remove_items' => __( 'Add or remove tags' ),
+    'choose_from_most_used' => __( 'Choose from the most used tags' ),
+    'menu_name' => __( 'Tags' ),
+  );
+
+  register_taxonomy('tag','project',array(
+    'hierarchical' => false,
+    'labels' => $labels,
+    'show_ui' => true,
+    'update_count_callback' => '_update_post_term_count',
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'category' ),
+  ));
+}
+add_action( 'init', 'tags_init' );
+
 function customThemeEnqueues(){
 	wp_enqueue_style('customStyle', get_template_directory_uri() . '/sass/custom-theme.min.css',  array(), '1.0.0', 'all');
 	wp_enqueue_script('jquery');
@@ -20,7 +51,6 @@ function customThemeSetup(){
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support('menus');
 	register_nav_menu('primary-nav', 'Nav bar menu');
-	register_nav_menu('footer-nav', 'Footer nav menu 1');
 }
 
 // Current page nav active
@@ -216,29 +246,6 @@ add_action( 'init', 'services_init' );
 // =============================================
 // CUSTOM META BOXES
 // =============================================
-
-// function add_job_metaboxes() {
-// 	add_meta_box(
-// 		'wpt_events_location',
-// 		'Event Location',
-// 		'wpt_events_location',
-// 		'events',
-// 		'side',
-// 		'default'
-// 	);
-// }
-//
-// function add_job_role() {
-// 	global $post;
-// 	// Nonce field to validate form request came from current site
-// 	wp_nonce_field( basename( __FILE__ ), 'event_fields' );
-// 	// Get the location data if it's already been entered
-// 	$location = get_post_meta( $post->ID, 'location', true );
-// 	// Output the field
-// 	echo '<input type="text" name="location" value="' . esc_textarea( $location )  . '" class="">';
-// }
-
-
 
 // =============================================
 

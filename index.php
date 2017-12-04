@@ -12,8 +12,10 @@
 	<div class="master-container">
 		<div class="main-content">
 			<div class="projects-wrapper">
+
 				<div class="page-title">
-					<h2><?= get_theme_mod('homepage_header', __('PROJECTS')) ?></h2>
+					<h2>INDEX PAGE</h2>
+					<!-- <h2><?= get_theme_mod('homepage_header', __('PROJECTS')) ?></h2> -->
 				</div>
 				<!-- Projects start here -->
 				<div class="flex-row projects-container">

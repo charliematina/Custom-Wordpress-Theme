@@ -23,6 +23,11 @@ jQuery(document).ready(function($){
 		}
 	})
 
+
+	if($(document).height() < 1000){
+		$('.footer-to-top-btn').hide();
+	}
+
 	// Change aspect ratio for project thumbnails
 	// $(window).load(function(){
 	// 	$('.project-thumb-image').find('img').each(function(){

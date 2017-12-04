@@ -9,6 +9,7 @@
 					</div>
 					<div class="project-page-content-container">
 						<?= the_content(); ?>
+						<!-- <?php the_terms( $post->ID, 'tag', 'Categories: ', ' / ' ); ?> -->
 					</div>
 		  		<?php endwhile; ?>
 		  		<?php if( is_singular('project') ) { ?>
