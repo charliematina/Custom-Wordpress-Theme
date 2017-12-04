@@ -16,7 +16,7 @@
 		 </div>
 			 <!-- Projects start here -->
 			 <div class="flex-row projects-container project-page">
-				 <?php $args = array( 'post_type' => 'project', 'posts_per_page' => 9999, 'paged' => get_query_var('paged') ? get_query_var('paged') : 1 ); ?>
+				 <?php $args = array( 'post_type' => 'project', 'posts_per_page' => 2, 'paged' => get_query_var('paged') ? get_query_var('paged') : 1 ); ?>
 				 <?php $loop = new WP_Query( $args ); ?>
 				 <?php if($loop->have_posts()): ?>
 					 <?php while($loop->have_posts()): $loop->the_post(); ?>
@@ -28,7 +28,7 @@
 						 				<!-- <?php the_post_thumbnail(); ?> -->
 						 				<img src="<?= the_post_thumbnail_url(); ?>" alt="test">
 						 			<?php else: ?>
-						 				<?php  the_title(); ?>
+						 				<h2><?php  the_title(); ?></h2>
 						 			<?php endif; ?>
 						 		</div>
 						 		<div class="project-thumb-description">
@@ -38,12 +38,12 @@
 						 	</a>
 						 </div>
 					 <?php endwhile; ?>
-					 <!-- <div class="pageNavigation">
+					 <div class="pageNavigation">
 						 <?php
 							 previous_posts_link( "<span class='pagination prev-page'>Prev</span>" );
 							 next_posts_link( "<span class='pagination next-page'>Next</span>", $loop->max_num_pages );
 						 ?>
-					 </div> -->
+					 </div>
 				 <?php endif; ?>
 			 </div>
 		 </div>

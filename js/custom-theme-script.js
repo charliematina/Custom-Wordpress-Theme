@@ -1,5 +1,14 @@
 jQuery(document).ready(function($){
 
+
+	$('.go-back').click(function(){
+		goBack();
+	})
+
+	function goBack() {
+    	window.history.back();
+	}
+
 	// Global variables
 	var mobileNavOpen = false;
 	var navOpen = false;
@@ -204,6 +213,12 @@ jQuery(document).ready(function($){
 	$('.get-in-touch-btn').click(function() {
 		$('.get-in-touch-btn').css('opacity','0.4');
 		$('.hidden-form').fadeIn();
+	});
+
+	$('.fa-frown-o').hover(function(){
+		$(this).removeClass('fa-frown-o').addClass('fa-smile-o');
+	}, function(){
+		$(this).removeClass('fa-smile-o').addClass('fa-frown-o');
 	});
 
 // End of script

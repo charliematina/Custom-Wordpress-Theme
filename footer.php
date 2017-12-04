@@ -7,10 +7,9 @@
 				<?php my_social_icons_output() ?>
 			</div>
 			<div class="footer-section full-footer-btm">
-				<div class="theme-by">Theme
+				<div class="theme-by"><a href="#">Theme</a>
 				</div>
-				<div class="footer-copyright">Copyright © 2006–2017 <br>
-				HYDE ARCHITECT</div>
+				<div class="footer-copyright"><p><?= get_theme_mod('footer_text', __('©2017 ExampleSite, Inc.')) ?></div>
 				<div class="footer-to-top-btn"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
 			</div>
 		</div>

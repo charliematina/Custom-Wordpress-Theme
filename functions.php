@@ -1,5 +1,7 @@
 <?php
 
+include('partials/user_customisation.php');
+
 function customThemeEnqueues(){
 	wp_enqueue_style('customStyle', get_template_directory_uri() . '/sass/custom-theme.min.css',  array(), '1.0.0', 'all');
 	wp_enqueue_script('jquery');

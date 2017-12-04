@@ -29,7 +29,7 @@
 		 						<p class="sub-header"><?= get_post_meta($post->ID, 'jobRole', true); ?></p>
 		 					</div>
 						</a>
-						<p class="team-member-description"><?= get_the_content(); ?></p>
+						<p class="team-member-description"><?= get_the_excerpt(); ?></p>
 					</div>
  		  		<?php endwhile; ?>
 			<?php endif; ?>

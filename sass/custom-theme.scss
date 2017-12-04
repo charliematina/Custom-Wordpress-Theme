@@ -6,6 +6,7 @@
 
 body{
 	font-family: proxima nova;
+	background-color: #ffffff;
 }
 
 a{
@@ -217,14 +218,14 @@ li{
 }
 
 .project-thumb-image{
-	background-color: #c9c9c9;
 	text-align: center;
-	height: 300px;
+	// height: 300px;
+	object-fit: cover;
 	overflow: hidden;
 
 	img{
 		width: 100%;
-		height: auto;
+		object-position: 0 0;
 	}
 }
 
@@ -541,6 +542,13 @@ footer{
 	// float: left;
 }
 
+// Error page styles
+.error-page{
+	h2{
+		font-size: 3em;
+	}
+}
+
 // Hide desktop styles
 .landing-page-bottom-nav, .navbar-item-wrapper, .featured-buttons-wrapper, #feature-slide-show, .full-footer, .team-member-description{
 	display: none;
@@ -824,6 +832,7 @@ footer{
 	.team-member-wrapper{
 		margin-bottom: 6em;
 		width: 100%;
+		overflow: auto;
 	}
 
 	.team-member-image{
@@ -848,6 +857,14 @@ footer{
 
 		p{
 			font-weight: 600;
+		}
+	}
+
+	.team-page-details, .team-member-image{
+		transition-duration: 300ms;
+
+		&:hover{
+			opacity: 0.5;
 		}
 	}
 

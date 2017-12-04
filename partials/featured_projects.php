@@ -30,6 +30,7 @@
 		<?php } ?>
 	</div>
 </div>
+
 <div class="mobile-featured-buttons-wrapper">
 	<i id="feature-slide-btn-1"class="fa fa-circle" aria-hidden="true"></i>
 	<i id="feature-slide-btn-2"class="fa fa-circle" aria-hidden="true"></i>
