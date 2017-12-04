@@ -92,6 +92,23 @@ function colourCustomization($wp_customize){
 	)));
 
 
+	for ($i=1; $i <= 3; $i++){
+
+		// Featured Projects Titles
+		$wp_customize->add_setting('feature_project_text_colour' . $i, array(
+				'default' => '#ffffff',
+				'transport' => 'refresh'
+		));
+
+		$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'featured_text_colour' . $i, array(
+			'label' =>__('Featured Project Text Colour' . $i,'New Theme'),
+			'section' => 'colour_section',
+			'settings' => 'feature_project_text_colour' . $i
+		)));
+
+	}
+
+
 }
 
 
@@ -110,6 +127,16 @@ function customCss(){
 
 		nav{
 			background-color: <?php echo get_theme_mod('nav_colour'); ?>;
+		}
+
+		#slide-1 .featured-project-description{
+			color: <?php echo get_theme_mod('feature_project_text_colour1'); ?>;
+		}
+		#slide-2 .featured-project-description{
+			color: <?php echo get_theme_mod('feature_project_text_colour2'); ?>;
+		}
+		#slide-3 .featured-project-description{
+			color: <?php echo get_theme_mod('feature_project_text_colour3'); ?>;
 		}
 
 	</style>

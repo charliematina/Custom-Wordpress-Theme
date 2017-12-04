@@ -36,7 +36,7 @@ nav{
 	width: 100%;
 	height: 70px;
 	position: fixed;
-	background-color: #ffffff;
+	background-color: transparent !important;
 	overflow: hidden;
 	position: fixed;
 	transition-duration: 400ms;
@@ -725,9 +725,17 @@ footer{
 	}
 
 	.featured-project-image{
-		width: 75%;
+		width: 100%;
 		position: absolute;
 		left: 0;
+		display: flex;
+		align-items: center;
+		transition-duration: 300ms;
+
+		&:hover{
+			opacity: 0.8;
+		}
+
 		img{
 			width: 100%;
 			height: auto;
@@ -735,10 +743,12 @@ footer{
 	}
 
 	.featured-project-description{
-		word-wrap: break-word;
-		text-align: left;
-		width: 40%;
-		right: 0;
+		// word-wrap: break-word;
+		color: white;
+		// text-shadow: 0px 1px rgba(#000000, 0.10);
+		text-align: center;
+		width: 60%;
+		// right: 0;
 		h2{
 			font-size: 3em;
 			letter-spacing: 0.5em;
