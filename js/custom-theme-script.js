@@ -71,7 +71,7 @@ jQuery(document).ready(function($){
 			$('.navbar-menu').fadeIn(300);
 			$('nav').css(
 				{
-					'background-color':'white',
+					'background-color':'#ffffff',
 					'box-shadow':'0px 0px 4px rgba(0, 0, 0, 0.15)'
 				}
 			);
@@ -153,29 +153,14 @@ jQuery(document).ready(function($){
 	//     .appendTo('#mobile-feature-slide-show');
 	// },  4000);
 
-	$('#feature-slide-btn-1').addClass('active-slide-btn');
-	$('#feature-slide-btn-1').click(function(){
+	$('.feature-button').click(function(){
 		$('.slide-btn').removeClass('active-slide-btn');
 		$(this).addClass('active-slide-btn');
-		$('#slide-2, #slide-3').stop().fadeOut();
-		$('#slide-1').stop().fadeIn();
-
-	});
-	$('#feature-slide-btn-2').click(function(){
-		$('.slide-btn').removeClass('active-slide-btn');
-		$(this).addClass('active-slide-btn');
-		$('#slide-1, #slide-3').stop().fadeOut();
-		$('#slide-2').stop().fadeIn();
+		$('.slide[data-slide]').stop().fadeOut();
+		$('.slide[data-slide="' + $(this).attr('data-feature') + '"]').stop().fadeIn();
 
 	});
 
-	$('#feature-slide-btn-3').click(function(){
-		$('.slide-btn').removeClass('active-slide-btn');
-		$(this).addClass('active-slide-btn');
-		$('#slide-1, #slide-2').stop().fadeOut();
-		$('#slide-3').stop().fadeIn();
-
-	});
 
 
 	// FORM VALIDATION

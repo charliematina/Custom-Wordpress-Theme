@@ -125,9 +125,9 @@ function customCss(){
 			background-color: <?php echo get_theme_mod('background_colour'); ?>;
 		}
 
-		nav{
+		/*nav{
 			background-color: <?php echo get_theme_mod('nav_colour'); ?>;
-		}
+		}*/
 
 		#slide-1 .featured-project-description{
 			color: <?php echo get_theme_mod('feature_project_text_colour1'); ?>;
