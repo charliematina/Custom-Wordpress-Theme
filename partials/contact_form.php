@@ -6,11 +6,11 @@
 				<div class="form-error"></div>
 			</div>
 			<div class="form-input">
-				<input id="email-field" class="input-field" type="text" name="email" placeholder="YOUR EMAIL">
+				<input id="email-field" class="input-field" type="email" name="email" placeholder="YOUR EMAIL">
 				<div class="form-error"></div>
 			</div>
 			<div class="form-input">
-				<input id="number-field" class="input-field" type="text" name="number" placeholder="YOUR NUMBER">
+				<input id="number-field" class="input-field" type="number" name="number" placeholder="YOUR NUMBER">
 				<div class="form-error"></div>
 			</div>
 			<div class="form-input">

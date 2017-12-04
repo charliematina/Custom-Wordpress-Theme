@@ -93,6 +93,21 @@ jQuery(document).ready(function($){
 		}
 	});
 
+	var mobileMenu = false;
+
+	// mobile menu
+	$('.mobile-navbar-icon').click(function(){
+
+		if( !mobileMenu){
+			$(this).empty().html('<i class="material-icons">close</i>');
+			mobileMenu = true;
+		} else{
+			$(this).empty().html('<i class="material-icons">menu</i>');
+			mobileMenu = false;
+		}
+
+	})
+
 	// Project thumbnail hover
 	$('.project-thumb-wrapper').hover(function(){
 

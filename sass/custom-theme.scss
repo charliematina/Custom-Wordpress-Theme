@@ -1,3 +1,16 @@
+// Google material icons
+// @font-face {
+//   font-family: 'Material Icons';
+//   font-style: normal;
+//   font-weight: 400;
+//   src: url(/assets/material-icons/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+//   src: local('Material Icons'),
+//     local('MaterialIcons-Regular'),
+//     url(/assets/material-icons/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+//     url(/assets/material-icons/iconfont/MaterialIcons-Regular.woff) format('woff'),
+//     url(/assets/material-icons/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+// }
+
 *{
 	margin: 0;
 	padding: 0;
@@ -28,6 +41,10 @@ nav{
 	position: fixed;
 	transition-duration: 400ms;
 	z-index: 2;
+}
+
+.sub-menu{
+	display: none;
 }
 
 .active{
@@ -549,6 +566,14 @@ footer{
 	}
 }
 
+.material-icons{
+	cursor: pointer;
+	transition-duration: 200ms;
+	&:hover{
+		opacity: 0.4;
+	}
+}
+
 // Hide desktop styles
 .landing-page-bottom-nav, .navbar-item-wrapper, .featured-buttons-wrapper, #feature-slide-show, .full-footer, .team-member-description{
 	display: none;
@@ -562,6 +587,7 @@ footer{
 	nav{
 		background-color: transparent;
 		height: 13vh;
+		overflow: visible;
 		top: 0;
 		display: flex;
 		align-items: center;
@@ -581,7 +607,6 @@ footer{
 	}
 
 	.navbar-menu{
-
 		display: none;
 
 		li{
@@ -594,6 +619,10 @@ footer{
 
 			&:last-child{
 				margin-right: 0px;
+			}
+
+			&:hover ul{
+				display: block;
 			}
 		}
 	}
@@ -613,6 +642,12 @@ footer{
 
 	.navbar-logo-wrapper{
 		height: 50px;
+	}
+
+	.go-down-btn,.footer-to-top-btn{
+		i{
+			font-size: 2em;
+		}
 	}
 
 	.landing-page-content{
@@ -800,10 +835,12 @@ footer{
 	}
 
 	.project-page-content-container{
-		margin-top: 0px;
 		margin: auto;
-	    margin-top: 0px;
+	    margin-top: 0;
+	    margin-bottom: 1.5em;
 	    width: 85%;
+		padding-bottom: 0.5em;
+		border-bottom: 0.1em solid #cccccc;
 
 		p{
 			margin: 30px 0px;
@@ -920,8 +957,9 @@ footer{
 	}
 
 	.pageNavigation{
-		width: 100%;
+		width: 80%;
 		margin: 3em 0.8em;
+		margin: 0 auto;
 
 
 	}
@@ -939,6 +977,10 @@ footer{
 
 		&:hover{
 			opacity: 0.4;
+		}
+
+		.fa:hover{
+			opacity: 1;
 		}
 	}
 
@@ -1087,6 +1129,30 @@ footer{
 		width: 50px;
 		text-align: left;
 		font-weight: 600;
+	}
+
+	// sub menu styles
+	.sub-menu{
+		background-color: rgba(#ffffff, 0.95);
+	    padding-top: 15px;
+	    font-size: 1.6em;
+		position: absolute;
+		padding-left: 1em;
+		padding-right: 1em;
+		display: none;
+		width: min-content;
+
+		li{
+			letter-spacing: 1px;
+			text-transform: lowercase;
+			float: left;
+			width: 100%;
+			margin-bottom: 15px;
+
+			&:hover{
+				opacity: 0.3;
+			}
+		}
 	}
 
 

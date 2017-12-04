@@ -6,7 +6,7 @@
 	<div class="landing-page-bottom-nav">
 		<?php my_social_icons_output() ?>
 		<div class="go-down-btn">
-			<i class="fa fa-arrow-down" aria-hidden="true"></i>
+			<i class="material-icons">arrow_downward</i>
 		</div>
 	</div>
 	<div class="master-container">

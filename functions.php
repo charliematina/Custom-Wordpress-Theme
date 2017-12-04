@@ -7,6 +7,7 @@ function customThemeEnqueues(){
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('customScript', get_template_directory_uri() . '/js/custom-theme-script.js',  array(), '1.0.0', true);
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/font-awesome/css/font-awesome.min.css' );
+	wp_enqueue_style( 'material-icons', get_template_directory_uri() . '/assets/material-icons/iconfont/material-icons.css' );
 }
 
 add_action('wp_enqueue_scripts', 'customThemeEnqueues');

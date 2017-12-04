@@ -14,8 +14,8 @@
 		  		<?php if( is_singular('project') ) { ?>
 					<div class="pageNavigation">
 						<?php
-							previous_post_link(  "<span class='pagination prev-page'>%link</span>" );
-							next_post_link( "<span class='pagination next-page'>%link</span>" );
+							previous_post_link(  "<span class='pagination prev-page'>".'%link', '<i class="fa fa-long-arrow-left" aria-hidden="true"></i> PREV '."</span>" );
+							next_post_link( "<span class='pagination next-page'>".'%link', 'NEXT <i class="fa fa-long-arrow-right" aria-hidden="true"></i>'."</span>" );
 						?>
 					</div>
 				<?php } ?>

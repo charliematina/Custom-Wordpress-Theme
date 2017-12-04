@@ -28,7 +28,7 @@
 			?>
 		</div>
 		<div class="mobile-navbar-icon">
-			<i class="fa fa-bars" aria-hidden="true"></i>
+			<i class="material-icons">menu</i>
 		</div>
 		<div class="mobile-navbar-menu">
 			<?php wp_nav_menu(array('theme_location'=>'primary-nav')); ?>
