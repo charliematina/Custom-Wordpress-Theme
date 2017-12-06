@@ -252,6 +252,10 @@ function colourCustomization($wp_customize){
 			'panel' =>'site_colours'
 	));
 
+	$wp_customize->add_section('font_section', array(
+			'title' =>__('Fonts', 'New Custom Theme')
+	));
+
 	// Add colour section
 	$wp_customize->add_section('button_colour_section', array(
 			'title' =>__('Button Colours', 'New Custom Theme'),
@@ -442,7 +446,7 @@ function colourCustomization($wp_customize){
 
 	// Project Homepage Mobile
 	$wp_customize->add_setting('project_text_mobile_settings', array(
-			'default' => '#000000',
+			'default' => '#ffffff',
 			'transport' => 'refresh'
 	));
 
@@ -464,6 +468,40 @@ function colourCustomization($wp_customize){
 		'settings' => 'sub_headers_setting'
 	)));
 
+	// Fonts
+	$wp_customize->add_setting('font_settings', array(
+			'transport' => 'refresh'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'newtheme_font', array(
+		'label' =>__('Primary Font','New Theme'),
+		'section' => 'font_section',
+		'type' => 'radio',
+		'choices' => array(
+			'Proxima Nova'=>__('Default'),
+			'Futura'=>__('Futura'),
+			'verdana'=>__('verdana')
+
+		),
+		'settings' => 'font_settings'
+	)));
+
+	$wp_customize->add_setting('sub_font_settings', array(
+			'transport' => 'refresh'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'newtheme_font_sub', array(
+		'label' =>__('Subheader Font','New Theme'),
+		'section' => 'font_section',
+		'type' => 'radio',
+		'choices' => array(
+			'Proxima Nova'=>__('Default'),
+			'courier new'=>__('courier new'),
+			'verdana'=>__('verdana')
+		),
+		'settings' => 'sub_font_settings'
+	)));
+
 
 }
 
@@ -479,6 +517,7 @@ function customCss(){
 
 		body{
 			background-color: <?php echo get_theme_mod('background_colour'); ?>;
+			font-family: <?php echo get_theme_mod('font_settings'); ?>;
 		}
 
 		/*nav{
@@ -533,6 +572,7 @@ function customCss(){
 
 		.nav-open, .sub-menu{
 			background-color: <?php echo get_theme_mod('nav_colour_settings'); ?> !important;
+			font-family: <?php echo get_theme_mod('sub_font_settings'); ?>;
 		}
 
 		.menu-item{
@@ -559,7 +599,7 @@ function customCss(){
 		}
 
 		.page-date, .sub-header{
-			color: <?php echo get_theme_mod('sub_headers_setting'); ?> !important;
+			font-family: <?php echo get_theme_mod('sub_font_settings'); ?> !important;
 		}
 
 
