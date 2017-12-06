@@ -11,6 +11,15 @@
 //     url(/assets/material-icons/iconfont/MaterialIcons-Regular.ttf) format('truetype');
 // }
 
+@mixin flex{
+	display:-webkit-flex;
+    display:-webkit-box;
+    display:-moz-flex;
+    display:-moz-box;
+    display:-ms-flexbox;
+    display:flex;
+}
+
 *{
 	margin: 0;
 	padding: 0;
@@ -20,6 +29,10 @@
 body{
 	font-family: proxima nova, avenir, helvetica, sans-serif;
 	background-color: #ffffff;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 a{
@@ -43,6 +56,11 @@ nav{
 	z-index: 4;
 }
 
+.nav-open{
+	background-color: #ffffff;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+}
+
 .sub-menu{
 	display: none;
 }
@@ -52,6 +70,10 @@ nav{
 	opacity: 0.3;
 }
 
+.active-slide-btn{
+	opacity: 1;
+}
+
 .custom-logo{
 	height: 100%;
 	width: auto;
@@ -59,12 +81,12 @@ nav{
 
 .flex-row{
 	display: flex;
+	@include flex;
 	flex-direction: column;
 	// justify-content: space-around;
 }
 
 .col{
-	// flex: 1;
 	width: 100%;
 	padding: 1em 3em;
 }
@@ -82,6 +104,7 @@ nav{
 	width: 80%;
 	margin: 0 auto;
 	display: flex;
+	@include flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
@@ -131,11 +154,12 @@ li{
 #mobile-feature-slide-show{
 
 	display: flex;
-	position: relative;
-	display: flex;
-	align-items: center;
+	@include flex;
 	justify-content: center;
-	text-align: center;
+	position: relative;
+	width: 100%;
+	height: 100%;
+
 	img{
 		height: 100%;
 		width: auto;
@@ -144,6 +168,11 @@ li{
 
 .featured-project-image{
 	height: 100%;
+
+	img{
+		height: 100%;
+		width: auto;
+	}
 }
 
 .featured-project-description{
@@ -172,24 +201,23 @@ li{
 	margin: 0 auto;
 	font-size: 0.8em;
 	display: flex;
+	@include flex;
 	margin-bottom: 25px;
 	justify-content: space-between;
 	align-items: center;
-
-	i{
-		opacity: 0.4;
-	}
 }
 
 .mobile-slide-wrapper{
 	position: absolute;
 	display: flex;
+	@include flex;
     align-items: center;
     justify-content: center;
 
 	a{
 		position: absolute;
 	    display: flex;
+		@include flex;
 	    align-items: center;
 	    justify-content: center;
 		height: 90vh;
@@ -470,6 +498,7 @@ textarea{
 .service-no-image{
 	height: 80vh;
 	display: flex;
+	@include flex;
 	align-items: center;
 }
 
@@ -508,6 +537,7 @@ footer{
 	width: 80%;
 	margin: 0 auto;
 	display: flex;
+	@include flex;
 	justify-content: space-between;
 	align-items: center;
 }
@@ -586,6 +616,7 @@ footer{
 
 .active-slide-btn{
 	opacity: 1;
+	font-size: 1em;
 }
 
 #slide-2, #slide-3{
@@ -608,12 +639,14 @@ footer{
 		overflow: visible;
 		top: 0;
 		display: flex;
+		@include flex;
 		align-items: center;
 		z-index: 5;
 	}
 
 	.navbar-item-wrapper{
 		display: flex;
+		@include flex;
 		justify-content: space-between;
 		width: 93%;
 		margin: 0 auto;
@@ -647,6 +680,7 @@ footer{
 
 	.flex-row{
 		display: flex;
+		@include flex;
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: flex-start;
@@ -674,6 +708,7 @@ footer{
 		width: 100%;
 		margin-top: 13vh;
 		display: flex;
+		@include flex;
 		align-items: center;
 	}
 
@@ -683,6 +718,7 @@ footer{
 		padding-top: 20px;
 		margin: auto;
 		display: flex;
+		@include flex;
 		justify-content: space-between;
 		transition-duration: 600ms;
 
@@ -698,12 +734,14 @@ footer{
 		height: 100%;
 		overflow: hidden;
 		display: flex;
+		@include flex;
 		align-items: center;
 		background-color: transparent !important;
 	}
 
 	#feature-slide-show{
 		display: flex;
+		@include flex;
 		justify-content: center;
 		position: relative;
 		width: 100%;
@@ -717,6 +755,7 @@ footer{
 			position: absolute;
 			left: 0;
 			display: flex;
+			@include flex;
 			align-items: center;
 			justify-content: center;
 			width: 100%;
@@ -729,6 +768,7 @@ footer{
 		position: absolute;
 		left: 0;
 		display: flex;
+		@include flex;
 		align-items: center;
 		transition-duration: 300ms;
 
@@ -801,6 +841,7 @@ footer{
 
 	.project-thumb-wrapper{
 		display: flex;
+		@include flex;
 		height: 500px;
 		overflow: hidden;
 		align-items: center;
@@ -812,6 +853,7 @@ footer{
 	.project-thumb-link{
 		position: relative;
 	    display: flex;
+		@include flex;
 	    align-items: center;
 	    justify-content: center;
 	}
@@ -833,7 +875,8 @@ footer{
 		position: absolute;
 		top: 0;
 		left: 0;
-		background-color: rgba(#000000, 0.79);
+		opacity: 0.8;
+		background-color: #000000;
 	}
 
 	// Project Page Template Styles
@@ -954,6 +997,7 @@ footer{
 		width: 100%;
 		height: auto;
 		display: flex;
+		@include flex;
 		align-items: center;
 		justify-content: space-between;
 		margin-bottom: 60px;
@@ -969,6 +1013,7 @@ footer{
 		ul{
 			width: 100%;
 			display: flex;
+			@include flex;
 			justify-content: space-between;
 		}
 
@@ -980,6 +1025,7 @@ footer{
 	}
 
 	.footer-copyright{
+		color: #000000;
 		font-size: 0.7em;
 		font-weight: 600;
 	}
@@ -1035,6 +1081,7 @@ footer{
 	.split-page{
 		margin-top: 3em;
 		display: flex;
+		@include flex;
 		align-items: flex-start;
 
 		.page-detail-wrapper{
@@ -1116,6 +1163,7 @@ footer{
 		margin: auto;
 		width: 40px;
 		height: 20px;
+		padding: 0.5em;
 		cursor: pointer;
 		position: relative;
 		z-index: 5;
@@ -1129,7 +1177,7 @@ footer{
 	}
 
 	.burger-line{
-		width: 100%;
+		width: 110%;
 		height: 5px;
 		background-color: #1f1f1f;
 		// margin-bottom: 4px;
@@ -1161,7 +1209,7 @@ footer{
 
 	// sub menu styles
 	.sub-menu{
-		background-color: rgba(#ffffff, 0.95);
+		background-color: #ffffff;
 	    padding-top: 15px;
 	    font-size: 1.6em;
 		position: absolute;
@@ -1169,6 +1217,7 @@ footer{
 		padding-right: 1em;
 		display: none;
 		width: min-content;
+		box-shadow: 0px 0px 4px rgba(0, 0, 0, 0);
 
 		li{
 			letter-spacing: 1px;
@@ -1181,6 +1230,10 @@ footer{
 				opacity: 0.3;
 			}
 		}
+	}
+
+	.active-slide-btn{
+		opacity: 1;
 	}
 
 

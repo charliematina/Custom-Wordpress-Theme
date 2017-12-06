@@ -68,32 +68,33 @@ jQuery(document).ready(function($){
 			$("#hamburger-wrapper").css('width','30px');
 			$(".top").addClass("rotate1");
 			$(".btm, .mdl").addClass("rotate2");
-			$('.navbar-menu').fadeIn(300);
-			$('nav').css(
-				{
-					'background-color':'#ffffff',
-					'box-shadow':'0px 0px 4px rgba(0, 0, 0, 0.15)'
-				}
-			);
+			$('.navbar-menu').stop().fadeIn(300);
+			$('nav').addClass('nav-open');
 			menuOpen = true;
 		} else{
 			$(".burger-line").css({
-				"width":"100%",
+				"width":"110%",
 				"top":"0"
 			});
 			$("#hamburger-wrapper").css('width','40px');
 			$(".top").removeClass("rotate1");
 			$(".btm, .mdl").removeClass("rotate2").css({'top':'15px','width':'60%'});
-			$('.navbar-menu').fadeOut(300);
-			$('nav').css(
-				{
-					'background-color':'transparent',
-					'box-shadow':'0px 0px 4px rgba(0, 0, 0, 0)'
-				}
-			);
+			$('.navbar-menu').stop().fadeOut(300);
+			$('nav').removeClass('nav-open');
 			menuOpen = false;
 		}
 	});
+
+	$('.menu-item, menu-item ul').hover(function(){
+		if($(this).hasClass('menu-item-has-children')){
+			$(this).next('sub-menu').css('display','block');
+			// $('nav').css({'height':'15vh','padding-bottom':'1em'});
+		} else{
+
+		}
+	}, function(){
+		// $('nav').css({'height':'13vh','padding-bottom':'0'});
+	})
 
 	var mobileMenu = false;
 
@@ -102,9 +103,13 @@ jQuery(document).ready(function($){
 
 		if( !mobileMenu){
 			$(this).empty().html('<i class="material-icons">close</i>');
+			$('body').css('overflow','hidden');
+			$('nav').css('overflow','scroll');
 			mobileMenu = true;
 		} else{
 			$(this).empty().html('<i class="material-icons">menu</i>');
+			$('body').css('overflow','auto');
+			$('nav').css('overflow','hidden');
 			mobileMenu = false;
 		}
 
@@ -131,42 +136,18 @@ jQuery(document).ready(function($){
 	})
 	})
 
-	// Featured projects slide show
-	// $("#feature-slide-show > div:gt(0), #mobile-feature-slide-show > div:gt(0)").hide();
-
-	// setInterval(function() {
-	//   $('#feature-slide-show > div:first').stop()
-	//     .fadeOut(800)
-	//     .next()
-	//     .fadeIn(1000)
-	//     .end()
-	//     .appendTo('#feature-slide-show');
-	//
-	// },  4000);
-	//
-	// setInterval(function() {
-	//   $('#mobile-feature-slide-show > div:first')
-	//     .fadeOut(800)
-	//     .next()
-	//     .fadeIn(1000)
-	//     .end()
-	//     .appendTo('#mobile-feature-slide-show');
-	// },  4000);
-
+	$('#mobile-feature-slide-btn-1').addClass('active-slide-btn');
 	$('.feature-button').click(function(){
 		$('.slide-btn').removeClass('active-slide-btn');
 		$(this).addClass('active-slide-btn');
 		$('.slide[data-slide]').stop().fadeOut();
-		$('.slide[data-slide="' + $(this).attr('data-feature') + '"]').stop().fadeIn();
-
+		$('.slide[data-slide="' + $(this).attr('data-feature') + '"]').stop().css('display','flex').hide().fadeIn();
 	});
-
 
 
 	// FORM VALIDATION
 	$('#contact-submit-button').click(function(event){
 		event.preventDefault();
-		// alert('HI');
 		var nameValid = false;
 		var emailValid = false;
 		var enquiryValid = false;
@@ -239,7 +220,7 @@ jQuery(document).ready(function($){
 	// Get in touch contact form show effect
 	$('.get-in-touch-btn').click(function() {
 		$('.get-in-touch-btn').css('opacity','0.4');
-		$('.hidden-form').fadeIn();
+		$('.hidden-form').stop().fadeIn();
 	});
 
 	$('.fa-frown-o').hover(function(){

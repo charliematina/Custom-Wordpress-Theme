@@ -14,11 +14,14 @@
 					</div>
 					</a>
 				</div>
-		<?php } } ?>
+		<?php } else{
+			// get_theme_mod('featured_project_title_'.$i,  __('©2017 ExampleSite, Inc.'));
+		}} ?>
 	</div>
-	<div id="mobile-feature-slide-show">
-		<?php for ($i=1; $i <= 3; $i++) { ?>
-				<div class="mobile-slide-wrapper slide" data-slide="<?= $i ?>" id="slide-<?= $i ?>">
+	<div id="#mobile-feature-slide-show">
+		<?php for ($i=1; $i <= 3; $i++) {
+			if(get_theme_mod('featured_project_mobile_'.$i)){ ?>
+				<div class="mobile-slide-wrapper slide" data-slide="<?= $i ?>" id="mobile-slide-<?= $i ?>">
 					<a href="<?= get_theme_mod('featured_project_link_mobile_'.$i) ?>">
 					<div class="featured-project-image">
 						<img src="<?= get_theme_mod('featured_project_mobile_'.$i)?>" alt="featured project">
@@ -29,7 +32,7 @@
 					</div>
 					</a>
 				</div>
-		<?php } ?>
+		<?php } } ?>
 	</div>
 </div>
 <div class="featured-buttons-wrapper">
@@ -40,7 +43,9 @@
 			<?php } ?>
 </div>
 <div class="mobile-featured-buttons-wrapper">
-	<i id="feature-slide-btn-1"class="fa fa-circle feature-button" aria-hidden="true" data-feature="1"></i>
-	<i id="feature-slide-btn-2"class="fa fa-circle feature-button" aria-hidden="true" data-feature="2"></i>
-	<i id="feature-slide-btn-3"class="fa fa-circle feature-button" aria-hidden="true" data-feature="3"></i>
+			<?php for ($i=1; $i <= 3; $i++) { ?>
+				<?php if(get_theme_mod('featured_project_mobile_'.$i)): ?>
+				<div><i id="mobile-feature-slide-btn-<?= $i ?>" class="fa fa-circle slide-btn feature-button<?=$i==1?' active-slide-btn':'';?>" data-feature="<?= $i ?>" aria-hidden="true"></i></div>
+				<?php endif; ?>
+			<?php } ?>
 </div>
