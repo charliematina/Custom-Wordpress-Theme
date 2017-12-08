@@ -385,6 +385,52 @@ function colourCustomization($wp_customize){
 		'settings' => 'button_border_setting'
 	)));
 
+	// Service list button Colours
+	$wp_customize->add_setting('service_button_border_setting', array(
+			'default' => '#000000',
+			'transport' => 'refresh'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'service_button_border_colour', array(
+		'label' =>__('Service Button Border Colour','New Theme'),
+		'section' => 'button_colour_section',
+		'settings' => 'service_button_border_setting'
+	)));
+
+	$wp_customize->add_setting('service_button_text_colour_setting', array(
+			'default' => '#000000',
+			'transport' => 'refresh'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'service_button_text_colour', array(
+		'label' =>__('Service Button Text Colour','New Theme'),
+		'section' => 'button_colour_section',
+		'settings' => 'service_button_text_colour_setting'
+	)));
+
+	$wp_customize->add_setting('service_button_hover_text_setting', array(
+			'default' => '#ffffff',
+			'transport' => 'refresh'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'service_button_hover_text', array(
+		'label' =>__('Service Button Hover Text Colour','New Theme'),
+		'section' => 'button_colour_section',
+		'settings' => 'service_button_hover_text_setting'
+	)));
+
+	$wp_customize->add_setting('service_button_hover_colour_setting', array(
+			'default' => '#000000',
+			'transport' => 'refresh'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'service_button_hover_colour', array(
+		'label' =>__('Service Button Hover Colour','New Theme'),
+		'section' => 'button_colour_section',
+		'settings' => 'service_button_hover_colour_setting'
+	)));
+
+
 	// Menu Item
 	$wp_customize->add_setting('menu_text_colour_settings', array(
 			'default' => '#000000',
@@ -568,6 +614,16 @@ function customCss(){
 			color: <?php echo get_theme_mod('button_text_colour_setting'); ?>;
 			background-color: <?php echo get_theme_mod('button_colour_setting'); ?>;
 			border: 1.5px solid <?php echo get_theme_mod('button_border_setting');?>;
+		}
+
+		.service-list-item{
+			color: <?php echo get_theme_mod('service_button_text_colour_setting'); ?>;
+			border: 1.5px solid <?php echo get_theme_mod('service_button_border_setting');?>;
+		}
+
+		.service-list-item:hover{
+			background-color: <?php echo get_theme_mod('service_button_hover_text_setting'); ?>;
+			color: <?php echo get_theme_mod('service_button_hover_colour_setting'); ?>;
 		}
 
 		.nav-open, .sub-menu{

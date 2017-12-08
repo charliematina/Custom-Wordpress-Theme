@@ -26,6 +26,7 @@ jQuery(document).ready(function($){
 
 	if($(document).height() < 1000){
 		$('.footer-to-top-btn').hide();
+		$('.footer-social-links').css('margin','0 auto');
 	}
 
 	// Scroll to element functionfunction scroll(element, target, speed){
@@ -137,6 +138,7 @@ jQuery(document).ready(function($){
 	})
 
 	$('#mobile-feature-slide-btn-1').addClass('active-slide-btn');
+	// $('#mobile-slide-2, #mobile-slide-3').css('display','none');
 	$('.feature-button').click(function(){
 		$('.slide-btn').removeClass('active-slide-btn');
 		$(this).addClass('active-slide-btn');

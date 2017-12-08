@@ -1,9 +1,3 @@
-<?php
-	/*
-		Template Name: Team Page
-	*/
- ?>
-
  <?php get_header(); ?>
  <div class="page-master-container">
  		<div class="main-content">
@@ -15,7 +9,7 @@
 					<?php endwhile; wp_reset_query(); ?>
 				<?php endif; ?>
 			</div>
-		
+
  		</div>
  	</div>
  <?php get_footer(); ?>

@@ -3,9 +3,10 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- <script src="https://use.fontawesome.com/f00ece0a4b.js"></script> -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 		<?php wp_head(); ?>
-		<title>Hyde Architect</title>
+		<title><?php wp_title(); ?></title>
 	</head>
 	<body>
 		<?php include("nav.php"); ?>

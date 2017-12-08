@@ -1,9 +1,15 @@
 <?php get_header(); ?>
-	<?php if(have_posts()): ?>
-	  <?php while(have_posts()): the_post(); ?>
-		  <?php get_template_part('page-title'); ?>
-		  <?= the_content(); ?>
-	  <?php endwhile; ?>
-  <?php endif; ?>
-  <p class="info-content"><?php the_content(); ?></p>
+<div class="page-master-container">
+	   <div class="main-content">
+		   <div class="page-detail-wrapper">
+			   <?php if(have_posts()): ?>
+				   <?php while(have_posts()): the_post(); ?>
+					   <h2 class="page-title"><?php the_title(); ?></h2>
+					   <?php the_content(); ?>
+				   <?php endwhile; wp_reset_query(); ?>
+			   <?php endif; ?>
+		   </div>
+
+	   </div>
+   </div>
 <?php get_footer(); ?>

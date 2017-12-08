@@ -19,11 +19,13 @@
 				<div class="flex-row projects-container">
 					<?php $args = array( 'post_type' => 'project', 'posts_per_page' => 3); ?>
 					<?php $loop = new WP_Query( $args ); ?>
-					<?php if($loop->have_posts()): ?>
+					<?php if($loop->have_posts()){?>
 						<?php while($loop->have_posts()): $loop->the_post(); ?>
 							<?php include('partials/projects.php'); ?>
 						<?php endwhile; ?>
-					<?php endif; ?>
+					<?php } else{ ?>
+						<p style="text-align: center; width: 80%; margin: 0 auto;">Projects added will automatically appear here</p>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
