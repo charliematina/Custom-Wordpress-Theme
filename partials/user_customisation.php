@@ -497,7 +497,7 @@ function colourCustomization($wp_customize){
 	));
 
 	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'project_text_mobile', array(
-		'label' =>__('Homepage Project Text Colour','New Theme'),
+		'label' =>__('Mobile Homepage Text Colour','New Theme'),
 		'section' => 'project_thumbnail_section',
 		'settings' => 'project_text_mobile_settings'
 	)));
@@ -606,7 +606,7 @@ function customCss(){
 			color: <?php echo get_theme_mod('heading_text_colour_setting'); ?>;
 		}
 
-		.page-detail-wrapper p, .team-member-wrapper p{
+		.page-detail-wrapper p, .team-member-wrapper p, .project-page-content-container p{
 			color: <?php echo get_theme_mod('body_text_colour_setting'); ?>;
 		}
 
@@ -644,18 +644,19 @@ function customCss(){
 			}
 		}
 
-		@media screen and (min-width: 600px){
-			.project-thumb-description, .project-thumb-date{
-				color: <?php echo get_theme_mod('project_text_settings'); ?> !important;
-			}
-		}
-
 		.project-thumb-description, .project-thumb-date{
 			color: <?php echo get_theme_mod('project_text_mobile_settings'); ?> !important;
 		}
 
 		.page-date, .sub-header{
 			font-family: <?php echo get_theme_mod('sub_font_settings'); ?> !important;
+			color: <?php echo get_theme_mod('sub_headers_setting'); ?> !important;
+		}
+
+		@media screen and (min-width: 600px){
+			.project-thumb-description, .project-thumb-date{
+				color: <?php echo get_theme_mod('project_text_settings'); ?> !important;
+			}
 		}
 
 

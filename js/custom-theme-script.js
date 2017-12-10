@@ -231,6 +231,7 @@ jQuery(document).ready(function($){
 		$(this).removeClass('fa-smile-o').addClass('fa-frown-o');
 	});
 
+
 // End of script
 
 })
