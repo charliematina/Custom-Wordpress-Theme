@@ -434,16 +434,6 @@ function my_social_icons_output() {
 // =============================================
 // REQUIRED FEATURED IMAGE
 // =============================================
-function featured_image_requirement() {
-
-
-     if(get_post_type($post_id) == 'project' || !has_post_thumbnail()) {
-	 	$post->post_status = 'draft';
-     	wp_update_post( $post );
-		// wp_die('You forgot to set the featured image. Click the back button on your browser and set it.');
-     }
-
-}
 
 function featured_image_warning(){
 	if(get_post_type($post_id) == 'project'){
@@ -467,6 +457,4 @@ function featured_image_warning(){
 	}
 }
 
-
-add_action( 'publish_project', 'featured_image_requirement' );
 add_action( 'admin_notices', 'featured_image_warning' );

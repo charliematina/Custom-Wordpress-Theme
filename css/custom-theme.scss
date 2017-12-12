@@ -145,7 +145,6 @@ li{
 	align-items: center;
 	justify-content: center;
 	text-align: center;
-	background-color: #d6d6d6;
 	overflow: hidden;
 }
 
@@ -629,7 +628,7 @@ footer{
 // ========================
 // Responsive Code for mobile
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 470px){
 
 	nav{
 		background-color: transparent;
@@ -1259,7 +1258,7 @@ footer{
 
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px){
+@media screen and (min-width: 470px) and (max-width: 1024px){
 	.featured-project-description h2{
 		font-size: 2em !important;
 	}
@@ -1274,6 +1273,7 @@ footer{
 		margin: 0.6em;
 		padding: 0 0;
 	}
+
 
 
 }
