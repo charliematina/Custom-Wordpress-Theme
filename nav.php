@@ -22,7 +22,7 @@
 	<div class="mobile-navbar-wrapper">
 		<?php
 			if ( has_custom_logo()) {
-				?><div class="navbar-logo-wrapper"><?php the_custom_logo(); ?></div><?php
+				?><div class="navbar-logo-wrapper custom-logo"><?php the_custom_logo(); ?></div><?php
 			} elseif (!has_custom_logo()) {
 				?><div class="site-title-logo"><h2><a href="<?= home_url(); ?>"><?php blogInfo(); ?></a></h2></div><?php
 			}

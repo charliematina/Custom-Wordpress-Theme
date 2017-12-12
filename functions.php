@@ -34,9 +34,9 @@ function tags_init() {
 add_action( 'init', 'tags_init' );
 
 function customThemeEnqueues(){
-	wp_enqueue_style('customStyle', get_template_directory_uri() . '/sass/custom-theme.min.css',  array(), '1.0.0', 'all');
+	wp_enqueue_style('customStyle', get_template_directory_uri() . '/css/custom-theme.min.css',  array(), '1.0.0', 'all');
 	wp_enqueue_script('jquery');
-	wp_enqueue_script('customScript', get_template_directory_uri() . '/js/custom-theme-script.js',  array(), '1.0.0', true);
+	wp_enqueue_script('customScript', get_template_directory_uri() . '/js/custom-theme-script.min.js',  array(), '1.0.0', true);
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/font-awesome/css/font-awesome.min.css' );
 	wp_enqueue_media( 'images', get_template_directory_uri() . '/images/hydelogo.png' );
 	// wp_enqueue_style( 'material-icons', get_template_directory_uri() . '/assets/material-icons/iconfont/material-icons.css' );
@@ -362,6 +362,13 @@ function my_add_customizer_sections( $wp_customize ) {
 		'description' => __( 'Add the URL for each of your social profiles.', 'hyde architects custom theme' )
 	) );
 
+	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'social icons enable', array(
+		'label' =>__('Footer Copyright Text','Custom Theme'),
+		'section' => 'ct_hyde_social_media_icons',
+		'settings' => 'icons_enable'
+	)));
+
+
 	// create a setting and control for each social site
 	foreach ( $social_sites as $social_site => $value ) {
 
@@ -410,6 +417,14 @@ function my_social_icons_output() {
 			</li>
 		<?php }
 		echo "</ul>";
+	} else{
+		?>
+		<ul class="footer-social-links">
+			<li><i class="fa fa-facebook" aria-hidden="true"></i></li>
+			<li><i class="fa fa-twitter" aria-hidden="true"></i></li>
+			<li><i class="fa fa-instagram" aria-hidden="true"></i></li>
+		</ul>
+		<?php
 	}
 }
 

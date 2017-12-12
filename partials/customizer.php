@@ -229,26 +229,6 @@ function featuredProjects($wp_customize){
 			'settings' => 'feature_project_text_colour' . $i
 		)));
 
-		$projectOptions = array();
-		$args = array('post_type' => 'project');
-		$projectOptions = get_posts( $args );
-		foreach($projectOptions as $projectOption) {
-		    $projectOptions_list[$projectOption->post_title] = $projectOption->post_title;
-		}
-
-		$wp_customize->add_setting('project_dropdown' . $i, array(
-				'transport' => 'update'
-		));
-
-		$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'project_dropdown' . $i, array(
-			'label' =>__('Select a Project', 'New Theme'),
-			'section' => 'featured_project_section_' . $i,
-			'settings' => 'project_dropdown' . $i,
-			'type' => 'select',
-			'choices' => $projectOptions_list,
-			'priority' => 1,
-		)));
-
 	}
 
 }

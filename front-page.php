@@ -17,7 +17,7 @@
 				</div>
 				<!-- Projects start here -->
 				<div class="flex-row projects-container">
-					<?php $args = array( 'post_type' => 'project', 'posts_per_page' => 3); ?>
+					<?php $args = array( 'post_type' => 'project', 'posts_per_page' => 6); ?>
 					<?php $loop = new WP_Query( $args ); ?>
 					<?php if($loop->have_posts()){?>
 						<?php while($loop->have_posts()): $loop->the_post(); ?>

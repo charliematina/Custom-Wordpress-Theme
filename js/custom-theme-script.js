@@ -27,7 +27,6 @@ jQuery(document).ready(function($){
 		$('body, nav').css('padding-top','32px');
 	}
 
-
 	if($(document).height() < 1000){
 		$('.footer-to-top-btn').hide();
 		$('.footer-social-links').css('margin','0 auto');

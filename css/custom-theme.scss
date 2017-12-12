@@ -1262,11 +1262,18 @@ footer{
 @media screen and (min-width: 768px) and (max-width: 1024px){
 	.featured-project-description h2{
 		font-size: 2em !important;
-		color: red;
 	}
 
-	body{
-		background-color: blue;
+	.navbar-menu li{
+		font-size: 0.6em;
+		letter-spacing: 2px;
 	}
+
+	.col{
+		width: 46%;
+		margin: 0.6em;
+		padding: 0 0;
+	}
+
 
 }
