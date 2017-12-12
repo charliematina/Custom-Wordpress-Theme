@@ -228,6 +228,27 @@ function featuredProjects($wp_customize){
 			'section' => 'featured_project_section_' . $i,
 			'settings' => 'feature_project_text_colour' . $i
 		)));
+
+		$projectOptions = array();
+		$args = array('post_type' => 'project');
+		$projectOptions = get_posts( $args );
+		foreach($projectOptions as $projectOption) {
+		    $projectOptions_list[$projectOption->post_title] = $projectOption->post_title;
+		}
+
+		$wp_customize->add_setting('project_dropdown' . $i, array(
+				'transport' => 'update'
+		));
+
+		$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'project_dropdown' . $i, array(
+			'label' =>__('Select a Project', 'New Theme'),
+			'section' => 'featured_project_section_' . $i,
+			'settings' => 'project_dropdown' . $i,
+			'type' => 'select',
+			'choices' => $projectOptions_list,
+			'priority' => 1,
+		)));
+
 	}
 
 }
@@ -519,6 +540,11 @@ function colourCustomization($wp_customize){
 			'transport' => 'refresh'
 	));
 
+
+	$array = array();
+	//create wp query to get all projects
+	//loop over all projects and push each name and id into the array
+
 	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'newtheme_font', array(
 		'label' =>__('Primary Font','New Theme'),
 		'section' => 'font_section',
@@ -527,7 +553,6 @@ function colourCustomization($wp_customize){
 			'Proxima Nova'=>__('Default'),
 			'Futura'=>__('Futura'),
 			'verdana'=>__('verdana')
-
 		),
 		'settings' => 'font_settings'
 	)));
@@ -547,7 +572,6 @@ function colourCustomization($wp_customize){
 		),
 		'settings' => 'sub_font_settings'
 	)));
-
 
 }
 
@@ -658,8 +682,6 @@ function customCss(){
 				color: <?php echo get_theme_mod('project_text_settings'); ?> !important;
 			}
 		}
-
-
 
 	</style>
 <?php

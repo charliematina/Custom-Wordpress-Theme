@@ -1,14 +1,14 @@
 <nav>
 	<div class="navbar-item-wrapper">
-		<div class="navbar-logo-wrapper">
-			<?php
-				if ( function_exists('the_custom_logo')) {
-				    the_custom_logo();
-				} else{
-					the_title();
-				}
-			?>
-		</div>
+		<!-- <div class="navbar-logo-wrapper"> -->
+		<?php
+			if ( has_custom_logo()) {
+				?><div class="navbar-logo-wrapper"><?php the_custom_logo(); ?></div><?php
+			} elseif (!has_custom_logo()) {
+				?><div class="site-title-logo"><h2><a href="<?= home_url(); ?>"><?php blogInfo(); ?></a></h2></div><?php
+			}
+		?>
+		<!-- </div> -->
 		<div class="navbar-menu">
 			<?php wp_nav_menu(array('theme_location'=>'primary-nav')); ?>
 		</div>
@@ -20,13 +20,13 @@
 		</div>
 	</div>
 	<div class="mobile-navbar-wrapper">
-		<div class="mobile-navbar-logo">
-			<?php
-				if ( function_exists('the_custom_logo')) {
-				    the_custom_logo();
-				}
-			?>
-		</div>
+		<?php
+			if ( has_custom_logo()) {
+				?><div class="navbar-logo-wrapper"><?php the_custom_logo(); ?></div><?php
+			} elseif (!has_custom_logo()) {
+				?><div class="site-title-logo"><h2><a href="<?= home_url(); ?>"><?php blogInfo(); ?></a></h2></div><?php
+			}
+		?>
 		<div class="mobile-navbar-icon">
 			<i class="material-icons">menu</i>
 		</div>

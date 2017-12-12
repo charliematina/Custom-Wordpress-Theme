@@ -46,6 +46,7 @@ jQuery(document).ready(function($){
     });
 
 	scrollTo('.go-down-btn','.projects-wrapper',1000);
+	scrollTo('#mobile-down-btn','#mobile-down-btn',1000);
 
 	// Scroll function effect
 	$(window).scroll(function() {

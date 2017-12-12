@@ -1,6 +1,6 @@
 <?php
 
-include('partials/user_customisation.php');
+include('partials/customizer.php');
 
 function tags_init() {
 	// create a new taxonomy
@@ -38,6 +38,7 @@ function customThemeEnqueues(){
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('customScript', get_template_directory_uri() . '/js/custom-theme-script.js',  array(), '1.0.0', true);
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/font-awesome/css/font-awesome.min.css' );
+	wp_enqueue_media( 'images', get_template_directory_uri() . '/images/hydelogo.png' );
 	// wp_enqueue_style( 'material-icons', get_template_directory_uri() . '/assets/material-icons/iconfont/material-icons.css' );
 }
 
@@ -70,7 +71,8 @@ function custom_logo_setup() {
         'height'      => 100,
         'width'       => 100,
         'flex-height' => false,
-        'flex-width'  => false
+        'flex-width'  => false,
+		'transport' => 'refresh'
     );
     add_theme_support( 'custom-logo', $defaults );
 }
@@ -248,7 +250,6 @@ add_action( 'init', 'services_init' );
 // =============================================
 
 // =============================================
-
 $metaboxes = array(
     'programmes' => array(
         'title' => __('Job Role(s)'),
@@ -421,23 +422,33 @@ function my_social_icons_output() {
 function featured_image_requirement() {
 
 
-     if(!has_post_thumbnail()) {
-
+     if(get_post_type($post_id) == 'project' || !has_post_thumbnail()) {
 	 	$post->post_status = 'draft';
      	wp_update_post( $post );
-		wp_die('You forgot to set the featured image. Click the back button on your browser and set it.');
+		// wp_die('You forgot to set the featured image. Click the back button on your browser and set it.');
      }
 
 }
 
 function featured_image_warning(){
-	if(get_post_type($post_id) == 'project' ){
-		?><div id="message" class="notice error dismissable">
+	if(get_post_type($post_id) == 'project'){
+
+		?>
+		<script>
+			setInterval(function(){
+				if(jQuery("#set-post-thumbnail img").length) jQuery("#publish").removeAttr("disabled");
+				else jQuery("#publish").attr("disabled", "disabled");
+			}, 500);
+		</script>
+		<?php
+			if (!has_post_thumbnail()) {
+		?><div id="message" class="notice error is-dismissible">
 		   <p>
 			   <strong><?php _e( 'Please make sure to set a Featured Image. Projects cannot be published without one.' ); ?></strong>
 		   </p>
 	   </div>
 	   <?php
+		   }
 	}
 }
 

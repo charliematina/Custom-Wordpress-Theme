@@ -1,13 +1,24 @@
+
+<!-- arg = array(
+ post_type = projects
+ id = getThememod('deatured 21')
+) -->
+
 <div class="featured-projects">
 	<div id="feature-slide-show">
 			<?php if(!get_theme_mod('featured_project_1')){ ?>
-				<div class="slide-wrapper slide no-slide" data-slide="1" id="slide-1">
-					<div class="featured-project-description">
-						<h2>SLIDE ONE</h2>
-						<p>Featured Project</p>
-					</div>
+				<div class="slide-wrapper slide" data-slide="1" id="slide-1">
+					<a href="#">
+						<div class="featured-project-image">
+							<img src="<?= get_template_directory_uri() . '/images/sliderplaceholder.jpg';?>" alt="featured project">
+						</div>
+						<div class="featured-project-description">
+							<h2>PROJECT TITLE</h2>
+							<p>A Sub Heading</p>
+						</div>
+					</a>
 				</div>
-		<?php }?>
+			<?php }?>
 		<?php for ($i=1; $i <= 3; $i++) {
 			if(get_theme_mod('featured_project_'.$i)){ ?>
 				<div class="slide-wrapper slide" data-slide="<?= $i ?>" id="slide-<?= $i ?>">
@@ -26,9 +37,16 @@
 	</div>
 	<div id="mobile-feature-slide-show">
 		<?php if(!get_theme_mod('featured_project_mobile_1')){ ?>
-			<div class="mobile-slide-wrapper slide no-slide" data-slide="1" id="mobile-slide-1">
-				<h2>SLIDE 1</h2>
-				<p>Mobile Featured Project</p>
+			<div class="mobile-slide-wrapper slide" data-slide="1" id="mobile-slide-1">
+				<a href="#">
+				<div class="featured-project-image">
+					<img src="<?= get_template_directory_uri() . '/images/mobileslide.jpg';?>" alt="featured project">
+				</div>
+				<div style="color: white;" class="featured-project-description">
+					<h2>PROJECT TITLE</h2>
+					<p>Sub Title</p>
+				</div>
+				</a>
 			</div>
 		<?php } ?>
 		<?php for ($i=1; $i <= 3; $i++) {
@@ -64,5 +82,8 @@
 				<div><i id="mobile-feature-slide-btn-<?= $i ?>" class="fa fa-circle slide-btn feature-button<?=$i==1?' active-slide-btn':'';?>" data-feature="<?= $i ?>" aria-hidden="true"></i></div>
 				<?php } ?>
 			<?php } else{} ?>
+		<?php } ?>
+		<?php if(!get_theme_mod('featured_project_mobile_2') && !get_theme_mod('featured_project_mobile_3')){ ?>
+			<div style="width: 100%; text-align: center;"><i id="mobile-down-btn" class="material-icons">arrow_downward</i></div>
 		<?php } ?>
 </div>

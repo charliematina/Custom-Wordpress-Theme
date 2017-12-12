@@ -86,6 +86,11 @@ nav{
 	}
 }
 
+.default-logo{
+	width: 100%;
+	height: auto;
+}
+
 .mobile-navbar-wrapper{
 	padding-top: 20px;
 	width: 80%;
@@ -1229,6 +1234,15 @@ footer{
 		display: flex;
 	    justify-content: center;
 	    align-items: center;
+	}
+
+	.default-logo{
+		width: 100%;
+		height: auto;
+	}
+
+	.site-title-logo{
+		color: #000000;
 	}
 
 
