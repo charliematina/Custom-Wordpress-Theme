@@ -513,13 +513,13 @@ function colourCustomization($wp_customize){
 
 	// Project Homepage Mobile
 	$wp_customize->add_setting('project_text_mobile_settings', array(
-			'default' => '#ffffff',
+			'default' => '#000000',
 			'transport' => 'refresh'
 	));
 
 	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'project_text_mobile', array(
 		'label' =>__('Mobile Homepage Text Colour','New Theme'),
-		'section' => 'project_thumbnail_section',
+		'section' => 'text_colour_section',
 		'settings' => 'project_text_mobile_settings'
 	)));
 

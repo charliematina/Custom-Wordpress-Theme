@@ -23,6 +23,10 @@ jQuery(document).ready(function($){
 		}
 	})
 
+	if($('#wpadminbar').length){
+		$('body, nav').css('padding-top','32px');
+	}
+
 
 	if($(document).height() < 1000){
 		$('.footer-to-top-btn').hide();
